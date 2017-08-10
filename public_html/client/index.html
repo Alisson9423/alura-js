@@ -1,0 +1,85 @@
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="css/css.css" type="text/css"> </head>
+
+    <body>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center text-primary display-3">Negociação</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form">
+
+                            <div class="form-group"> 
+                                <label for="data">Data</label>
+                                <input type="date" id="data" class="form-control" required autofocus>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quantidade">Quantidade</label>
+                                <input type="number"min="1" step="1" id="quantidade" value="1" class="form-control" required placeholder="Quantidade"> 
+                            </div>
+
+
+                            <div class="form-group"> 
+                                <label for="valor">Valor</label>
+                                <input type="number" id="valor" class="form-control" placeholder="Valor"> 
+                            </div>
+                            
+                            <button class="btn btn-primary" href="#">Incluir&nbsp;<i class="fa fa-fw fa-pencil-square-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button class="btn m-0 btn-primary text-white" href="#">Importar negociação&nbsp;</button>
+                        <button class="btn m-0 btn-primary text-white" href="#">Apagar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor</th>
+                                    <th>Volume</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+
+</html>
