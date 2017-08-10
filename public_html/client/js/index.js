@@ -21,16 +21,19 @@ document.querySelector('.form').addEventListener('submit',function(event){
         
     });
     
-    var tdVolume = document.createElement('td');
-    tdVolume.textContent = campos[1].value * campos[2].value;
-    tr.appendChild(tdVolume);
+    var tdVolume = document.createElement('td');//criando uma td para exibir resultado de valume  
+    tdVolume.textContent = campos[1].value * campos[2].value; //resultado da multiplicação
+    tr.appendChild(tdVolume);//add td
     
-    tbody.appendChild(tr);
+    tbody.appendChild(tr);//add tr na no tbody
     
-    campos[0].value = '';
+    
+    //restando valores 
+    campos[0].value = ''; 
     campos[1].value = 1;
     campos[2].value = 0;
     
+    //add foco na data 
     campos[0].focus();
     
 });
