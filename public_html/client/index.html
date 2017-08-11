@@ -82,8 +82,12 @@
         <script src="js/app/models/Negociacao.js"></script>
         <script>
             var n1 = new Negociacao(new Date(),5 ,700);
-            var valume = n1.obetemVolume();
-            console.log(valume);
+            
+            console.log(n1.getQuantidade());
+            console.log(n1.getData());
+            console.log(n1.getValor());
+            console.log(n1.getVolume());
+            
     
         </script>
     </body>
