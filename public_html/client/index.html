@@ -81,11 +81,14 @@
         <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
         <script src="js/app/models/Negociacao.js"></script>
         <script>
-            var n1 = new Negociacao(new Date(),5 ,700);
+            
+            let hoje = new Date(); //utilizando "let" em vez de "var" para garantir que a variavel vai ser acessada apenas dentro do bloco diferente de var
+            
+            let n1 = new Negociacao(hoje,5 ,700);
             
             console.log(n1.data);
             
-            n1.data.setDate(12);
+            hoje.setDate(12);
             
             console.log(n1.data);
         </script>
