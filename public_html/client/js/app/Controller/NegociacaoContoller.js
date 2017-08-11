@@ -17,7 +17,13 @@ class NegociacaoContoller{
         
         console.log(this._inputData.value);
         
-        let data = new Date(this._inputData.value.replace(/-/g,','));//ajustando data
+        let data = new Date(...
+            this._inputData.value
+            .split('-')
+            .map(function (item,indice){
+                return item - indice %2;
+            })
+        );//ajustando data
         
         let negociacao = new Negociacao(
                 this._inputData.value,
@@ -25,7 +31,7 @@ class NegociacaoContoller{
                 this._inputValor.value
                 );
         
-        console.log(negociacao);
+        console.log(data);
         
     }
     
