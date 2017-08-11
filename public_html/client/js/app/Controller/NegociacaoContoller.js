@@ -17,6 +17,7 @@ class NegociacaoContoller{
         
         console.log(this._inputData.value);
         
+        let data = new Date(this._inputData.value.replace(/-/g,','));//ajustando data
         
         let negociacao = new Negociacao(
                 this._inputData.value,
