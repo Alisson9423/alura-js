@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <form class="form">
+                        <form class="form" onsubmit="negociacaoController.adiciona(event)">
 
                             <div class="form-group"> 
                                 <label for="data">Data</label>
@@ -80,18 +80,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
         <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
         <script src="js/app/models/Negociacao.js"></script>
+        <script src="js/app/Controller/NegociacaoContoller.js"></script>
         <script>
-            
-            let hoje = new Date(); //utilizando "let" em vez de "var" para garantir que a variavel vai ser acessada apenas dentro do bloco diferente de var
-            
-            let n1 = new Negociacao(hoje,5 ,700);
-            
-            console.log(n1.data);
-            
-            hoje.setDate(12);
-            
-            console.log(n1.data);
-        </script>
+            let negociacaoController = new NegociacaoContoller();
+        </script>    
     </body>
 
 </html>
