@@ -3,7 +3,7 @@ class Negociacao {
         this._data = new Date(data.getTime());//capturando data 
         this._quantidade = qtd;
         this._valor = valor;
-        Object.freeze(this);
+        Object.freeze(this);//congelando o objeto
     }
     
     get volume(){
