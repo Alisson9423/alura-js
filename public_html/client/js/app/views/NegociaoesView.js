@@ -26,6 +26,7 @@ class NegociaoesView{
                             <tbody>
                                 ${                                
                                     model.Negocioaoes.map(n => {
+                                        console.log(n);
                                         return `
                                             <tr>
                                                 <td>${DateHelper.dataParaTexto(n.data)}</td>                                                
@@ -37,6 +38,17 @@ class NegociaoesView{
                                     }).join("")
                                 }
                             </tbody>
+                            
+                             <tfoot>
+                            <td colspan="3"></td>
+                            <td>${(function(){//roubando utilizando IIFE
+                                let total = 0;
+                                model.Negocioaoes.forEach(n => total+= n.volume);
+                                return total;
+                                
+                            })()}</td>
+                            </tfoot>
+                             
                         </table>
                     </div>
                 </div>
@@ -46,7 +58,7 @@ class NegociaoesView{
     }
     
     _update(model){
-        this._elemento.innerHTML = this._template(model);//atualizando um template 
+        this._elemento.innerHTML = this._template(model);//
     }
     
 }
