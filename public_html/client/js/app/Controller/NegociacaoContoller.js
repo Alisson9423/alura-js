@@ -49,11 +49,25 @@ class NegociacaoContoller{
     
     importaNegociaoes(){
         let xhr = new XMLHttpRequest();
-        xhr.open();
+        xhr.open('GET','negociacoes/semana');
+        
         
         xhr.onreadystatechange = () => {
+            if(xhr.readyState == 4){
             
+                if(xhr.status == 200){
+                console.log("ok");
+                JSON.parse(xhr.responseText)
+                    .map(objeto => new Negociacao(new Date(objeto.data),objeto.quantidade, objeto.valor))
+                    .forEach(negociacao => this._listaNegociaoes.adiciona(negociacao));
+            this._mensagem.texto = "Negociaões Importadas Com Sucesso :D"
+                
+            }else{
+                this._mensagem.texto = "Não Posivel obter as negociaoes da semana";
+                console.log(xhr.responseText);
+            }
         }
+        };
        
         /*
         0: Requisição ainda não iniciada 
@@ -64,14 +78,9 @@ class NegociacaoContoller{
          */
         xhr.send();
         
-        if(xhr.readyState == 4){
-            if(xhr.status == 200){
-                console.log("ok");
-            }else{
-                console.log("Não foi possivel obter as negociaoes do servidor");
-            }
-        }
         
+        
+        console.log(xhr.readyState);
     }
     
     _limpaFormulario(){
