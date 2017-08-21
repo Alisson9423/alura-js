@@ -7,7 +7,7 @@ class NegociacaoContoller{
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
-        this._listaNegociaoes = new ListaNegociacoes(function(model){
+        this._listaNegociaoes = new ListaNegociacoes(this,function(model){
             
             this._negociaoesView._update(model);
         
