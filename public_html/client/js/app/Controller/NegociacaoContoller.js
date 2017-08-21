@@ -47,6 +47,33 @@ class NegociacaoContoller{
                 );
     }
     
+    importaNegociaoes(){
+        let xhr = new XMLHttpRequest();
+        xhr.open();
+        
+        xhr.onreadystatechange = () => {
+            
+        }
+       
+        /*
+        0: Requisição ainda não iniciada 
+        1: Conxeção com servidor estabelecida
+        2: Requisição Recebida
+        3: Processando Requisição
+        4: Requisição Comcluida e a resposta esta pronta 
+         */
+        xhr.send();
+        
+        if(xhr.readyState == 4){
+            if(xhr.status == 200){
+                console.log("ok");
+            }else{
+                console.log("Não foi possivel obter as negociaoes do servidor");
+            }
+        }
+        
+    }
+    
     _limpaFormulario(){
         this._inputValor.value = "0.0"
         this._inputQuantidade.value = "1"
