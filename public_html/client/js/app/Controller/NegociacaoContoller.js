@@ -7,8 +7,22 @@ class NegociacaoContoller{
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
-        this._listaNegociaoes = new ListaNegociacoes(model => 
-            this._negociaoesView._update(model));
+        let self = this;
+        
+        this._listaNegociaoes = new Proxy(new ListaNegociacoes(),{
+           get(target,prop,reciver){
+               
+                if(['adiciona','esvazia'].includes(prop) && typeof(target[prop] == typeof(Function))){
+                    return function(){
+                        console.log(`interceptando ${prop}`);
+                        Reflect.apply(target[prop],target,arguments);
+                        self._negociaoesView._update(target);
+                    }
+                }
+                
+                return Reflect.get(target,prop,reciver);
+           } 
+        });
         
         this._negociaoesView = new NegociaoesView($("#negociaoesView"));//Criando um objeto do arquivo NegociaoesView.js
         this._negociaoesView._update(this._listaNegociaoes);
