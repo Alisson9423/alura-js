@@ -7,11 +7,8 @@ class NegociacaoContoller{
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
-        this._listaNegociaoes = new ListaNegociacoes(this,function(model){
-            
-            this._negociaoesView._update(model);
-        
-        });
+        this._listaNegociaoes = new ListaNegociacoes(model => 
+            this._negociaoesView._update(model));
         
         this._negociaoesView = new NegociaoesView($("#negociaoesView"));//Criando um objeto do arquivo NegociaoesView.js
         this._negociaoesView._update(this._listaNegociaoes);
