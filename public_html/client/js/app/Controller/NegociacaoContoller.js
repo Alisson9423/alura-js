@@ -4,27 +4,24 @@ class NegociacaoContoller{
     constructor(){
         
         let $ = document.querySelector.bind(document);
+        
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
-       
         
-        this._listaNegociaoes = ProxyFactory.create(
+        this._listaNegociaoes = new Bind(
                 new ListaNegociacoes(),
-                ['adiciona','esvazia'],
-                (model) => this._negociaoesView._update(model)
+                new NegociaoesView($("#negociaoesView")),
+                'adiciona','esvazia'
                 );
         
-        this._negociaoesView = new NegociaoesView($("#negociaoesView"));//Criando um objeto do arquivo NegociaoesView.js
-        this._negociaoesView._update(this._listaNegociaoes);
-        
-        this._mensagem = ProxyFactory.create(
+        this._mensagem = new Bind(
                 new Mensagem(),
-                ['texto'],
-                model => this._mensagemView._update(model));
-        this._mensagemView = new MensagemView($('#mensagemView'));
+                new MensagemView($('#mensagemView')),
+                'texto'
+                );
         
-        this._mensagemView._update(this._mensagem);
+  
         
     }
     
