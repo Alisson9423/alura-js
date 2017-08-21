@@ -28,6 +28,13 @@ class NegociacaoContoller{
     
     }
     
+    apaga(){
+        this._listaNegociaoes.esvazia();
+        this._negociaoesView._update(this._listaNegociaoes);
+        this._mensagem.texto = "Negociação Appagada Com Sucesso !";
+        this._mensagemView._update(this._mensagem);
+    }
+    
     _criaNegociacao(){
         return new Negociacao(
                 DateHelper.textoParaData(this._inputData.value),//setando valores para o constructor da class Negociacao

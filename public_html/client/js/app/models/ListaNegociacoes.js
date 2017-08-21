@@ -11,4 +11,9 @@ class ListaNegociacoes{
     get Negocioaoes(){
         return [].concat(this._negociaoes);//programação defensiva retorna uma copia das negociaoes
     }
+    
+    esvazia(){
+        this._negociaoes = [];
+    }
+    
 }
