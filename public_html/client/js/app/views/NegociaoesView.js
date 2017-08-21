@@ -2,13 +2,13 @@
 
  * 
  */
-class NegociaoesView{
+class NegociaoesView extends View{
     
     constructor(elemento){
-        this._elemento = elemento;//o elemento e minha referencia no html no caso a div com id negociaoesView
+        super(elemento);//passando elelmento para class super no caso a class pai View
     }
     
-    _template(model){//model é um objeto da class ListaNegociacoes.js
+    template(model){//model é um objeto da class ListaNegociacoes.js
         return `
         <div class="py-5">
             <div class="container">
@@ -57,8 +57,6 @@ class NegociaoesView{
     `;
     }
     
-    _update(model){
-        this._elemento.innerHTML = this._template(model);//
-    }
+    
     
 }
