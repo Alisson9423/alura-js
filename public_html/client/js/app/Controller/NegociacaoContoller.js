@@ -48,35 +48,70 @@ class NegociacaoContoller{
     }
     
     importaNegociaoes(){
+        
         let service  = new NegociacaoService();
+        
+        Promise.all([
+            service.obterNegociacoesDaSemana(),
+            service.obterNegociacoesDaSemanaAnterior(),
+            service.obterNegociacoesDaSemanaRetrasada()]
+        ).then(negociaoes =>{
+            negociaoes.reduce((arrayAchatado,array) => arrayAchatado.concat(array),[])
+            .forEach(negociaoes => this._listaNegociaoes.adiciona(negociaoes));
+            this._mensagem.texto= "Negociacões Importadas Com Sucesso !";
+        }).catch(erro =>
+            this._mensagem.texto = erro
+        );
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*
         service.obterNegociacoesDaSemana((erro,negociaoes) =>{
-            if(erro){/*error first */
+            if(erro){//error first
                 this._mensagem.texto = erro;
                 return;
             }
             negociaoes.forEach(negociao => this._listaNegociaoes.adiciona(negociao));
             this._mensagem.texto = "Negociaoes importadas com Sucesso :D"
         });
-        
         service.obterNegociacoesDaSemanaAnterior((erro,negociaoes) =>{
-            if(erro){/*error first */
+            if(erro){//error first
                 this._mensagem.texto = erro;
                 return;
             }
             negociaoes.forEach(negociao => this._listaNegociaoes.adiciona(negociao));
             this._mensagem.texto = "Negociaoes importadas com Sucesso :D"
         });
-        
-        
         service.obterNegociacoesDaSemanaRetrasada((erro,negociaoes) =>{
-            if(erro){/*error first */
+            if(erro){//rror first
                 this._mensagem.texto = erro;
                 return;
             }
             negociaoes.forEach(negociao => this._listaNegociaoes.adiciona(negociao));
             this._mensagem.texto = "Negociaoes importadas com Sucesso :D"
         });
-        
+        */
         
         
     }
