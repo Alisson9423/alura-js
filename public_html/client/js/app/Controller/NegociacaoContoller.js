@@ -48,39 +48,37 @@ class NegociacaoContoller{
     }
     
     importaNegociaoes(){
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET','negociacoes/semana');
-        
-        
-        xhr.onreadystatechange = () => {
-            if(xhr.readyState == 4){
-            
-                if(xhr.status == 200){
-                console.log("ok");
-                JSON.parse(xhr.responseText)
-                    .map(objeto => new Negociacao(new Date(objeto.data),objeto.quantidade, objeto.valor))
-                    .forEach(negociacao => this._listaNegociaoes.adiciona(negociacao));
-            this._mensagem.texto = "Negociaões Importadas Com Sucesso :D"
-                
-            }else{
-                this._mensagem.texto = "Não Posivel obter as negociaoes da semana";
-                console.log(xhr.responseText);
+        let service  = new NegociacaoService();
+        service.obterNegociacoesDaSemana((erro,negociaoes) =>{
+            if(erro){/*error first */
+                this._mensagem.texto = erro;
+                return;
             }
-        }
-        };
-       
-        /*
-        0: Requisição ainda não iniciada 
-        1: Conxeção com servidor estabelecida
-        2: Requisição Recebida
-        3: Processando Requisição
-        4: Requisição Comcluida e a resposta esta pronta 
-         */
-        xhr.send();
+            negociaoes.forEach(negociao => this._listaNegociaoes.adiciona(negociao));
+            this._mensagem.texto = "Negociaoes importadas com Sucesso :D"
+        });
+        
+        service.obterNegociacoesDaSemanaAnterior((erro,negociaoes) =>{
+            if(erro){/*error first */
+                this._mensagem.texto = erro;
+                return;
+            }
+            negociaoes.forEach(negociao => this._listaNegociaoes.adiciona(negociao));
+            this._mensagem.texto = "Negociaoes importadas com Sucesso :D"
+        });
+        
+        
+        service.obterNegociacoesDaSemanaRetrasada((erro,negociaoes) =>{
+            if(erro){/*error first */
+                this._mensagem.texto = erro;
+                return;
+            }
+            negociaoes.forEach(negociao => this._listaNegociaoes.adiciona(negociao));
+            this._mensagem.texto = "Negociaoes importadas com Sucesso :D"
+        });
         
         
         
-        console.log(xhr.readyState);
     }
     
     _limpaFormulario(){
