@@ -9,7 +9,7 @@ class NegociacaoContoller{
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
         
-        this._listaNegociaoes = new Bind(
+        this._listaNegociaoes = new Bind( //data bind fazendo a associação entre modelo e view
                 new ListaNegociacoes(),
                 new NegociaoesView($("#negociaoesView")),
                 'adiciona','esvazia'

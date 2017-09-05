@@ -8,8 +8,9 @@ class NegociaoesView extends View{
         super(elemento);//passando elelmento para class super no caso a class pai View
     }
     
-    template(model){//model é um objeto da class ListaNegociacoes.js
-        return `
+    template(model){//model é um objeto da class ListaNegociacoes.js 
+        // `` => template string 
+        return ` 
         <div class="py-5">
             <div class="container">
                 <div class="row">
